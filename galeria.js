@@ -49,11 +49,11 @@ const criarSlide =  (urlImagem , indice , arr) => {
    novaDiv.classList.add("slide")
    novaDiv.id = pegarId(urlImagem)
 
-   const indiceAnterior = indice <= 0 ? arr.length -1  : indice -1
+   const indiceAnterior = indice <= 0 ? arr.length -1  : indice -1   /// exemplo:  indice 2 - 1 = 1 indice anterior 
    const idAnterior = pegarId(arr[indiceAnterior])
 
 
-   const indiceProximo = indice >= arr.length -1  ? 0 : indice +1
+   const indiceProximo = indice >= arr.length -1  ? 0 : indice +1 /// exemplo:  indice 2 + 1 = 3  indice proximo 
    const idProximo = pegarId(arr[indiceProximo])
 
 
