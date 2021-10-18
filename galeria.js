@@ -12,6 +12,36 @@ const imagens = [
 
 ]
 
+
+
+const limparElementos = (elemento) =>{
+   while(elemento.firstChild){
+      elemento.removeChild(elemento.lastChild);
+   }
+}
+
+
+
+const pesquisarImagens = async (evento) =>{
+
+   if(evento.key === 'Enter'){
+      const raca = evento.target.value;
+      const url = `https://dog.ceo/api/breed/${raca}/images`;
+     const imagensResponse = await fetch (url);
+      const imagens = await imagensResponse.json();
+
+      limparElementos(document.querySelector(' .galeria-container'));
+      limparElementos(document.querySelector(' .slide-container'));
+
+
+      carregarGaleria(imagens.message);
+      carregarSlide(imagens.message);
+   }
+
+   
+  
+};
+
 const pegarId = (url) => {
 
 const posBarra = url.lastIndexOf("/") + 1 
@@ -76,5 +106,9 @@ const criarSlide =  (urlImagem , indice , arr) => {
 
 const carregarSlide = (imgs) => imgs.forEach(criarSlide)
 
-carregarGaleria(imagens)
-carregarSlide(imagens)
+///carregarGaleria(imagens)
+///carregarSlide(imagens)
+
+
+
+document.querySelector('.pesquisa-container input').addEventListener('keypress', pesquisarImagens);
